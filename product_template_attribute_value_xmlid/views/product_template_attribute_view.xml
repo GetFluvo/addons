@@ -1,46 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <data>
-        <record id="product_template_attribute_value_view_tree_override" model="ir.ui.view">
-            <field name="name">product.template.attribute.value.view.tree.override</field>
-            <field name="model">product.template.attribute.value</field>
-            <field name="inherit_id" ref="product.product_template_attribute_value_view_tree"/>
-            <field name="arch" type="xml">
-                <xpath expr="//list" position="attributes">
-                    <attribute name="create">1</attribute>
-                </xpath>
-            </field>
-        </record>
+    <record id="product_template_attribute_value_view_tree_override" model="ir.ui.view">
+        <field name="name">product.template.attribute.value.view.tree.override</field>
+        <field name="model">product.template.attribute.value</field>
+        <field
+            name="inherit_id"
+            ref="product.product_template_attribute_value_view_tree"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="create">1</attribute>
+            </xpath>
+        </field>
+    </record>
 
-        <record id="action_product_template_attribute_value" model="ir.actions.act_window">
-            <field name="name">Product Template Attribute Values</field>
-            <field name="res_model">product.template.attribute.value</field>
-            <field name="view_mode">list,form</field>
-            <field name="help">Manage product template attribute values.</field>
-        </record>
+    <record id="action_product_template_attribute_value" model="ir.actions.act_window">
+        <field name="name">Product Template Attribute Values</field>
+        <field name="res_model">product.template.attribute.value</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage product template attribute values.</field>
+    </record>
 
-        <record id="menu_product_template_attribute_value" model="ir.ui.menu">
-            <field name="name">Product Template Attribute Values</field>
-            <field name="parent_id" ref="sale.prod_config_main"/>
-            <field name="sequence">50</field>
-            <field name="action" ref="action_product_template_attribute_value"/>
-        </record>
+    <record id="menu_product_template_attribute_value" model="ir.ui.menu">
+        <field name="name">Product Template Attribute Values</field>
+        <field name="parent_id" ref="sale.prod_config_main" />
+        <field name="sequence">50</field>
+        <field name="action" ref="action_product_template_attribute_value" />
+    </record>
 
-
-
-        <record id="view_product_template_attribute_value_form_button" model="ir.ui.view">
-            <field name="name">product.template.attribute.value.form.button</field>
-            <field name="model">product.template.attribute.value</field>
-            <field name="inherit_id" ref="product.product_template_attribute_value_view_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//sheet[1]" position="inside">
-                    <button name="generate_attribute_value_xmlids"
-                            string="Generate XML IDs"
-                            type="object"
-                            class="oe_highlight"/>
-                </xpath>
-            </field>
-        </record>
-
-    </data>
+    <record id="view_product_template_attribute_value_form_button" model="ir.ui.view">
+        <field name="name">product.template.attribute.value.form.button</field>
+        <field name="model">product.template.attribute.value</field>
+        <field
+            name="inherit_id"
+            ref="product.product_template_attribute_value_view_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet[1]" position="inside">
+                <button
+                    name="generate_attribute_value_xmlids"
+                    string="Generate XML IDs"
+                    type="object"
+                    class="oe_highlight"
+                />
+            </xpath>
+        </field>
+    </record>
 </odoo>
