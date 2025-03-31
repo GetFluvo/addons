@@ -51,11 +51,12 @@ class ProductTemplateAttributeValueXMLID(models.Model):
                 }
             )
         except Exception as e:
-            self.env.cr.rollback()  # Rollback in case of error
-            self.env.cr.commit()
+            # self.env.cr.rollback()  # Removed direct cr.rollback()
+            # self.env.cr.commit()    # Removed direct cr.commit()
             self.env.logger.error(
                 f"Error creating XML ID for product.template.attribute.value: {e}"
             )
+            raise  # Re-raise the exception to allow Odoo to handle it
 
     @api.model
     def generate_attribute_value_xmlids(self, *args):
