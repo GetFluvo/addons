@@ -1,0 +1,41 @@
+<odoo>
+    <record id="generate_product_template_xmlids_wizard_form" model="ir.ui.view">
+        <field name="name">generate.template.xmlids.wizard.form</field>
+        <field name="model">generate.template.xmlids.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <p
+                        >Generate XML IDs for product templates that are missing them.</p>
+                    </group>
+                    <footer>
+                        <button
+                            name="generate_xmlids"
+                            string="Generate XML IDs"
+                            type="object"
+                            class="btn-primary"
+                        />
+                        <button
+                            string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"
+                        />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record
+        id="generate_product_template_xmlids_wizard_action"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Generate Product Template XML IDs</field>
+        <field name="res_model">generate.template.xmlids.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="product.model_product_template" />
+        <field name="binding_type">action</field>
+    </record>
+</odoo>
