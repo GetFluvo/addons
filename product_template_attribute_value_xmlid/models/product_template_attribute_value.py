@@ -1,4 +1,8 @@
+import logging
+
 from odoo import _, api, models
+
+_logger = logging.getLogger(__name__)
 
 
 class ProductTemplateAttributeValueXMLID(models.Model):
@@ -10,23 +14,51 @@ class ProductTemplateAttributeValueXMLID(models.Model):
         Overrides the create method to automatically generate XML IDs.
         """
         records = super().create(vals_list)
+        xml_ids_to_create = []  # List to store XML IDs to create
+
         for record in records:
-            self._generate_xmlid_for_record(
-                record
-            )  # Generate XML ID for each new record
+            xml_id = self._generate_xmlid_for_record_name(record)
+            if xml_id:  # Only proceed if xml_id is not empty
+                xml_ids_to_create.append((record, xml_id))
+
+        existing_xml_ids = self.env["ir.model.data"].search(
+            [
+                ("model", "=", "product.template.attribute.value"),
+                ("name", "in", [xml_id for _, xml_id in xml_ids_to_create]),
+            ]
+        )
+        existing_xml_id_names = set(existing_xml_ids.mapped("name"))
+
+        for record, xml_id in xml_ids_to_create:
+            if xml_id not in existing_xml_id_names:
+                try:
+                    self.env["ir.model.data"].create(
+                        {
+                            "module": "product_template_attribute_value",
+                            "name": xml_id,
+                            "model": "product.template.attribute.value",
+                            "res_id": record.id,
+                            "noupdate": True,
+                        }
+                    )
+                except Exception as e:
+                    _logger.error(f"Error creating XML ID: {e}")
+                    raise  # Re-raise the exception
+
         return records
 
-    def _generate_xmlid_for_record(self, attribute_value):
+    @api.model
+    def _generate_xmlid_for_record_name(self, attribute_value):
         """
-        Generates the XML ID for a given product.template.attribute.value record.
+        Generates the XML ID name (not the record) for a given
+        product.template.attribute.value record.
         """
-        # 2. Generate the XML ID using XML IDs of related records
         prod_templ_id = (
             self._get_xml_id(attribute_value.product_tmpl_id)
             if attribute_value.product_tmpl_id
-            else ""
+            else None
         )
-        (
+        attribute_id = (  # noqa
             self._get_xml_id(attribute_value.attribute_id)
             if attribute_value.attribute_id
             else ""
@@ -37,26 +69,10 @@ class ProductTemplateAttributeValueXMLID(models.Model):
             else ""
         )
 
-        xml_id = f"{prod_templ_id}_{attribute_value_id}".replace(" ", "_")
+        if not prod_templ_id:
+            return None  # Return None if any part is missing
 
-        # 3. Create the ir.model.data record
-        try:
-            self.env["ir.model.data"].create(
-                {
-                    "module": "product_template_attribute_value",
-                    "name": xml_id,
-                    "model": "product.template.attribute.value",
-                    "res_id": attribute_value.id,
-                    "noupdate": True,
-                }
-            )
-        except Exception as e:
-            # self.env.cr.rollback()  # Removed direct cr.rollback()
-            # self.env.cr.commit()    # Removed direct cr.commit()
-            self.env.logger.error(
-                f"Error creating XML ID for product.template.attribute.value: {e}"
-            )
-            raise  # Re-raise the exception to allow Odoo to handle it
+        return f"{prod_templ_id}_{attribute_value_id}".replace(" ", "_")
 
     @api.model
     def generate_attribute_value_xmlids(self, *args):
@@ -80,7 +96,7 @@ class ProductTemplateAttributeValueXMLID(models.Model):
         )
 
         for attribute_value in attribute_values_without_xmlid:
-            self._generate_xmlid_for_record(attribute_value)
+            self._generate_xmlid_for_record_name(attribute_value)
 
         return {
             "type": "ir.actions.client",
@@ -88,13 +104,13 @@ class ProductTemplateAttributeValueXMLID(models.Model):
             "params": {
                 "title": _("XML IDs Created"),
                 "message": _(
-                    "XML IDs for product.template.attribute.value",
-                    "records have been generated.",
+                    "XML IDs for product.template.attribute.value records have been generated."  # noqa
                 ),
                 "type": "success",
             },
         }
 
+    @api.model
     def _get_xml_id(self, record):
         """Helper function to get the XML ID of a record."""
         if not record:
