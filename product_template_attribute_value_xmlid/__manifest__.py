@@ -1,4 +1,4 @@
-# Copyright 2025 Odoo Data Flow
+# Copyright 2025 Fluvo
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
 {
@@ -10,8 +10,8 @@
         "and attribute values. These can be used to generate predictable "
         "combinations for product.product records."
     ),
-    "author": "Odoo Data Flow",
-    "website": "https://github.com/OdooDataFlow/addons",
+    "author": "Fluvo",
+    "website": "https://github.com/GetFluvo/addons",
     "category": "Technical Settings",
     "depends": [
         "product",

@@ -1,12 +1,12 @@
-# Copyright 2025 Odoo Data Flow
+# Copyright 2025 Fluvo
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
 {
     "name": "Product Template Attribute Lines Menu",
     "version": "18.0.1.0.0",
     "summary": "Adds a menu item for product.template.attribute.line",
-    "author": "Odoo Data Flow",
-    "website": "https://github.com/OdooDataFlow/addons",
+    "author": "Fluvo",
+    "website": "https://github.com/GetFluvo/addons",
     "category": "Technical Settings",
     "depends": [
         "product",

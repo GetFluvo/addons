@@ -48,12 +48,12 @@ repos:
       # update the NOT INSTALLABLE ADDONS section above
       - id: oca-update-pre-commit-excluded-addons
       - id: oca-fix-manifest-website
-        args: ["https://github.com/OdooDataFlow/addons"]
+        args: ["https://github.com/GetFluvo/addons"]
       - id: oca-gen-addon-readme
         args:
           - --addons-dir=.
           - --branch=18.0
-          - --org-name=OdooDataFlow
+          - --org-name=GetFluvo
           - --repo-name=addons
           - --if-source-changed
           - --keep-source-digest
