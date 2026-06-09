@@ -1,4 +1,4 @@
-# Copyright 2025 Odoo Data Flow
+# Copyright 2025 Fluvo
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
 # Please do not inherit from this module
