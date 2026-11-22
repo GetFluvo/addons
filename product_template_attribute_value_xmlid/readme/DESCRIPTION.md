@@ -1,28 +1,15 @@
-This Odoo module automates the generation of XML IDs for product.template.attribute.value records. These records define the specific combinations of attributes and their values used to create product variants (e.g., "Color: Red, Size: Large").
+This module gives every `product.template.attribute.value` record a predictable
+XML ID, so that product variants can be referenced in imports and integrations
+without looking up database ids.
 
+When Odoo creates a template attribute value, the module adds an XML ID
+`product_template_attribute_value.<template>_<value>`, where:
 
-## Functionality:
+- `<template>` is the name of the XML ID of the product template;
+- `<value>` is the name of the XML ID of the attribute value.
 
-Automatic XML ID Generation:
+Characters other than letters, digits and underscores are replaced by `_`.
 
-The module overrides the create() method of the product.template.attribute.value model.
-Whenever a new product.template.attribute.value record is created, the module automatically generates an XML ID for it.
-XML ID Naming Convention:
-
-The generated XML ID follows a predefined pattern, composed of the XML IDs of the related records:
-prod_templ_id.xmlid: The XML ID of the associated product.template.
-attribute_id.xmlid: The XML ID of the associated product.attribute.
-attribute_value_id.xmlid: The XML ID of the associated product.attribute.value.
-
-The parts are combined with underscorese.
-This ensures that the XML ID is predictable and reflects the specific attribute value combination.
-
-## Manual XML ID Generation:
-
-The module also provides a method (generate_attribute_value_xmlids) that can be manually triggered to generate XML IDs for existing product.template.attribute.value records that might not have them.
-Benefits:
-
-Predictability: Ensures consistent and predictable XML IDs.
-Automation: Automates the XML ID creation process.
-Data Integrity: Maintains data integrity by generating unique XML IDs.
-Integration: Simplifies integration with external systems.
+No XML ID is generated when the template or the attribute value has no XML ID
+(the result would not be predictable), or when the name is already used by
+another record; the latter is logged as a warning.
