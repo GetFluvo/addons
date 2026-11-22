@@ -4,7 +4,7 @@
 import logging
 import re
 
-from odoo import _, api, models
+from odoo import api, models
 
 _logger = logging.getLogger(__name__)
 
@@ -106,8 +106,8 @@ class ProductTemplateAttributeValue(models.Model):
             "type": "ir.actions.client",
             "tag": "display_notification",
             "params": {
-                "title": _("XML IDs Created"),
-                "message": _(
+                "title": self.env._("XML IDs Created"),
+                "message": self.env._(
                     "%(count)s XML IDs for product template attribute values "
                     "have been generated.",
                     count=len(created),

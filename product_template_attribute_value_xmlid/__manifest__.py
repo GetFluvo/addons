@@ -21,5 +21,4 @@
     "data": ["views/product_template_attribute_view.xml"],
     "license": "LGPL-3",
     "installable": True,
-    "cloc_exclude": [],
 }
