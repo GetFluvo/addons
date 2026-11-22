@@ -1,5 +1,4 @@
-## Purpose:
-
-The module adds a Adds a menu item for product.template.attribute.line for easier debugging of product variants.
-
-
+In standard Odoo, the attributes of a product are only visible on the product
+form, one product at a time. Checking the variants of a whole catalogue, or
+importing the attributes of many products, needs a list of all attribute
+lines.
