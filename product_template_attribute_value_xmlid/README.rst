@@ -1,6 +1,6 @@
-======================================================
-Generate XML IDs for Product Template Attribute Values
-======================================================
+=======================
+Attribute Value XML IDs
+=======================
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -47,45 +47,15 @@ already used by another record; the latter is logged as a warning.
 Use Cases / Context
 ===================
 
-Purpose:
---------
+Product variants are built from ``product.template.attribute.value``
+records: one per attribute value on a product template (for example
+*Size: L* on a *Desk Organizer*). Odoo gives these records no XML ID, so
+imports and integrations have to look them up by database id, which
+differs between databases.
 
-The module ensures that every product.template.attribute.value record
-has a predictable and consistent XML ID, which is crucial for:
-
-Data Integration: Facilitating seamless data exchange with external
-systems that rely on stable identifiers. Automation: Simplifying
-automated processes within Odoo that need to reference specific
-attribute value combinations.
-
-Use Cases:
-----------
-
-E-commerce platforms that need to synchronize product variant data with
-Odoo. Warehouse management systems that rely on unique identifiers for
-product configurations. Any scenario where stable and predictable
-identifiers for product attribute combinations are required. This
-description provides a good overview of the module's purpose and
-functionality.
-
-Installation
-============
-
-[ This file must only be present if there are very specific installation
-instructions, such as installing non-python dependencies. The audience
-is systems administrators. ]
-
-Configuration
-=============
-
-To configure this module, you need to:
-
-1. Ensure that the ``product`` module is installed in your Odoo
-   instance, as this module is a dependency.
-2. Place the ``product_template_attribute_value_xmlid`` module directory
-   in your Odoo addons path.
-3. Install the ``product_template_attribute_value_xmlid`` module through
-   the Odoo Apps interface.
+With a predictable XML ID, extra prices, exclusions and variant
+combinations can be imported and synchronized with external systems by
+reference.
 
 Usage
 =====
@@ -97,8 +67,7 @@ To generate the XML IDs of records that existed before the module was
 installed:
 
 1. Go to *Sales > Products > Product Template Attribute Values*.
-2. Open any record.
-3. Click *Generate XML IDs*.
+2. Click *Generate XML IDs* above the list.
 
 All template attribute values without a generated XML ID get one, if
 their template and attribute value have an XML ID.

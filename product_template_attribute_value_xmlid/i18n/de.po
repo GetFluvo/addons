@@ -25,9 +25,9 @@ msgstr ""
 #. module: product_template_attribute_value_xmlid
 #: model:ir.module.module,description:base.module_product_template_attribute_value_xmlid
 msgid ""
-"======================================================\n"
-"Generate XML IDs for Product Template Attribute Values\n"
-"======================================================\n"
+"=======================\n"
+"Attribute Value XML IDs\n"
+"=======================\n"
 "\n"
 ".. \n"
 "   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
@@ -40,7 +40,7 @@ msgid ""
 ".. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png\n"
 "    :target: https://odoo-community.org/page/development-status\n"
 "    :alt: Beta\n"
-".. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png\n"
+".. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png\n"
 "    :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html\n"
 "    :alt: License: LGPL-3\n"
 ".. |badge3| image:: https://img.shields.io/badge/github-GetFluvo%2Faddons-lightgray.png?logo=github\n"
@@ -74,45 +74,15 @@ msgid ""
 "Use Cases / Context\n"
 "===================\n"
 "\n"
-"Purpose:\n"
-"--------\n"
+"Product variants are built from ``product.template.attribute.value``\n"
+"records: one per attribute value on a product template (for example\n"
+"*Size: L* on a *Desk Organizer*). Odoo gives these records no XML ID, so\n"
+"imports and integrations have to look them up by database id, which\n"
+"differs between databases.\n"
 "\n"
-"The module ensures that every product.template.attribute.value record\n"
-"has a predictable and consistent XML ID, which is crucial for:\n"
-"\n"
-"Data Integration: Facilitating seamless data exchange with external\n"
-"systems that rely on stable identifiers. Automation: Simplifying\n"
-"automated processes within Odoo that need to reference specific\n"
-"attribute value combinations.\n"
-"\n"
-"Use Cases:\n"
-"----------\n"
-"\n"
-"E-commerce platforms that need to synchronize product variant data with\n"
-"Odoo. Warehouse management systems that rely on unique identifiers for\n"
-"product configurations. Any scenario where stable and predictable\n"
-"identifiers for product attribute combinations are required. This\n"
-"description provides a good overview of the module's purpose and\n"
-"functionality.\n"
-"\n"
-"Installation\n"
-"============\n"
-"\n"
-"[ This file must only be present if there are very specific installation\n"
-"instructions, such as installing non-python dependencies. The audience\n"
-"is systems administrators. ]\n"
-"\n"
-"Configuration\n"
-"=============\n"
-"\n"
-"To configure this module, you need to:\n"
-"\n"
-"1. Ensure that the ``product`` module is installed in your Odoo\n"
-"   instance, as this module is a dependency.\n"
-"2. Place the ``product_template_attribute_value_xmlid`` module directory\n"
-"   in your Odoo addons path.\n"
-"3. Install the ``product_template_attribute_value_xmlid`` module through\n"
-"   the Odoo Apps interface.\n"
+"With a predictable XML ID, extra prices, exclusions and variant\n"
+"combinations can be imported and synchronized with external systems by\n"
+"reference.\n"
 "\n"
 "Usage\n"
 "=====\n"
@@ -124,8 +94,7 @@ msgid ""
 "installed:\n"
 "\n"
 "1. Go to *Sales > Products > Product Template Attribute Values*.\n"
-"2. Open any record.\n"
-"3. Click *Generate XML IDs*.\n"
+"2. Click *Generate XML IDs* above the list.\n"
 "\n"
 "All template attribute values without a generated XML ID get one, if\n"
 "their template and attribute value have an XML ID.\n"
@@ -178,30 +147,20 @@ msgid ""
 msgstr ""
 
 #. module: product_template_attribute_value_xmlid
+#: model:ir.module.module,shortdesc:base.module_product_template_attribute_value_xmlid
+msgid "Attribute Value XML IDs"
+msgstr "XML-IDs für Attributwerte"
+
+#. module: product_template_attribute_value_xmlid
 #: model:ir.model.fields,field_description:product_template_attribute_value_xmlid.field_product_template_attribute_value__display_name
 msgid "Display Name"
 msgstr "Anzeigename"
 
 #. module: product_template_attribute_value_xmlid
+#: model_terms:ir.ui.view,arch_db:product_template_attribute_value_xmlid.product_template_attribute_value_view_tree_override
 #: model_terms:ir.ui.view,arch_db:product_template_attribute_value_xmlid.view_product_template_attribute_value_form_button
 msgid "Generate XML IDs"
 msgstr "XML-IDs erzeugen"
-
-#. module: product_template_attribute_value_xmlid
-#: model:ir.module.module,shortdesc:base.module_product_template_attribute_value_xmlid
-msgid "Generate XML IDs for Product Template Attribute Values"
-msgstr "XML-IDs für Produktvorlagen-Attributwerte erzeugen"
-
-#. module: product_template_attribute_value_xmlid
-#: model:ir.module.module,summary:base.module_product_template_attribute_value_xmlid
-msgid ""
-"Generates predictable XML IDs for product.template.attribute.value records "
-"based on template and attribute values. These can be used to generate "
-"predictable combinations for product.product records."
-msgstr ""
-"Erzeugt vorhersagbare XML-IDs für product.template.attribute.value-"
-"Datensätze auf Basis von Vorlage und Attributwerten. Damit lassen sich "
-"vorhersagbare Kombinationen für product.product-Datensätze erzeugen."
 
 #. module: product_template_attribute_value_xmlid
 #: model:ir.model.fields,field_description:product_template_attribute_value_xmlid.field_product_template_attribute_value__id
@@ -212,6 +171,11 @@ msgstr "ID"
 #: model_terms:ir.actions.act_window,help:product_template_attribute_value_xmlid.action_product_template_attribute_value
 msgid "Manage product template attribute values."
 msgstr "Verwalten Sie die Attributwerte der Produktvorlagen."
+
+#. module: product_template_attribute_value_xmlid
+#: model:ir.module.module,summary:base.module_product_template_attribute_value_xmlid
+msgid "Predictable XML IDs for product variant attribute values"
+msgstr "Vorhersagbare XML-IDs für Attributwerte von Produktvarianten"
 
 #. module: product_template_attribute_value_xmlid
 #: model:ir.model,name:product_template_attribute_value_xmlid.model_product_template_attribute_value
@@ -229,3 +193,12 @@ msgstr "Produktvorlagen-Attributwerte"
 #: code:addons/product_template_attribute_value_xmlid/models/product_template_attribute_value.py:0
 msgid "XML IDs Created"
 msgstr "XML-IDs erzeugt"
+
+#~ msgid ""
+#~ "Generates predictable XML IDs for product.template.attribute.value records "
+#~ "based on template and attribute values. These can be used to generate "
+#~ "predictable combinations for product.product records."
+#~ msgstr ""
+#~ "Erzeugt vorhersagbare XML-IDs für product.template.attribute.value-"
+#~ "Datensätze auf Basis von Vorlage und Attributwerten. Damit lassen sich "
+#~ "vorhersagbare Kombinationen für product.product-Datensätze erzeugen."

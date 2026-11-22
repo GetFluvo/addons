@@ -11,6 +11,17 @@
             <xpath expr="//list" position="attributes">
                 <attribute name="create">1</attribute>
             </xpath>
+            <!-- The list is editable and has no link to this form in 20.0 -->
+            <xpath expr="//list/*[1]" position="before">
+                <header>
+                    <button
+                        name="generate_attribute_value_xmlids"
+                        string="Generate XML IDs"
+                        type="object"
+                        display="always"
+                    />
+                </header>
+            </xpath>
         </field>
     </record>
 
