@@ -1,0 +1,29 @@
+# odoo-lint configuration: https://odoo-lint.readthedocs.io/en/latest/configuration.html
+target-version = "19.0"
+select = ["ALL", "MOD011", "MOD013"]
+exclude = ["setup"]
+
+[rules.manifest-required-author]
+authors = ["Fluvo"]
+
+[rules.manifest-required-key]
+keys = ["license"]
+
+[rules.manifest-deprecated-key]
+keys = ["description", "active"]
+
+[rules.license-allowed]
+allowed = [
+    "AGPL-3",
+    "GPL-2",
+    "GPL-2 or any later version",
+    "GPL-3",
+    "GPL-3 or any later version",
+    "LGPL-3",
+]
+
+[rules.manifest-version-format]
+valid-odoo-versions = ["19.0"]
+
+[rules.manifest-website]
+website = "https://github.com/GetFluvo/addons"
