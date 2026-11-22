@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[import_metadata](import_metadata/) | 20.0.1.0.0 |  | Import the creation and last update user and date of records
 [product_template_attribute_line](product_template_attribute_line/) | 20.0.1.0.0 |  | Adds a menu item for product.template.attribute.line
 [product_template_attribute_value_xmlid](product_template_attribute_value_xmlid/) | 20.0.1.0.1 |  | Predictable XML IDs for product variant attribute values
 
