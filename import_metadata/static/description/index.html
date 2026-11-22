@@ -428,6 +428,15 @@ sets.</p>
 directly, with user ids or records and datetimes or strings.</p>
 <p>Without the context key, or for other users, the columns are ignored as
 without this module, and the import does not fail.</p>
+<p>Odoo posts a <em>created</em> message in the chatter of every new record, with
+the date of the import and the importing user as author. For historical
+data, suppress it with one of these context keys of Odoo, next to
+<tt class="docutils literal">write_metadata</tt>:</p>
+<ul class="simple">
+<li><tt class="docutils literal">&quot;mail_create_nolog&quot;: True</tt>: no <em>created</em> message.</li>
+<li><tt class="docutils literal">&quot;tracking_disable&quot;: True</tt>: no <em>created</em> message, no tracking of
+field changes, and no automatic followers.</li>
+</ul>
 </div>
 <div class="section" id="known-issues-roadmap">
 <h1><a class="toc-backref" href="#toc-entry-3">Known issues / Roadmap</a></h1>

@@ -67,6 +67,13 @@ filled in exports with the first XML ID of the document.
   ``res_external_id``, then the messages that refer to them with
   ``attachment_ids/id``.
 
+When importing a history, import the documents themselves with
+``"mail_create_nolog": True`` or ``"tracking_disable": True`` in the
+context, so that Odoo does not add a *created* message of today next to
+the imported messages. Messages keep the ``date`` and ``author_id`` of
+the import file. To also keep their ``create_uid`` and ``create_date``,
+use the ``import_metadata`` module.
+
 Bug Tracker
 ===========
 

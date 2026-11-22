@@ -436,6 +436,12 @@ move an existing message to another document.</li>
 <tt class="docutils literal">res_external_id</tt>, then the messages that refer to them with
 <tt class="docutils literal">attachment_ids/id</tt>.</li>
 </ul>
+<p>When importing a history, import the documents themselves with
+<tt class="docutils literal">&quot;mail_create_nolog&quot;: True</tt> or <tt class="docutils literal">&quot;tracking_disable&quot;: True</tt> in the
+context, so that Odoo does not add a <em>created</em> message of today next to
+the imported messages. Messages keep the <tt class="docutils literal">date</tt> and <tt class="docutils literal">author_id</tt> of
+the import file. To also keep their <tt class="docutils literal">create_uid</tt> and <tt class="docutils literal">create_date</tt>,
+use the <tt class="docutils literal">import_metadata</tt> module.</p>
 </div>
 <div class="section" id="bug-tracker">
 <h1><a class="toc-backref" href="#toc-entry-3">Bug Tracker</a></h1>
