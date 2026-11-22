@@ -17,7 +17,6 @@
         "product",
         "sale_management",
     ],
-    # 'excludes': ['product_barcodelookup',],
     "data": ["views/product_template_attribute_view.xml"],
     "license": "LGPL-3",
     "installable": True,
