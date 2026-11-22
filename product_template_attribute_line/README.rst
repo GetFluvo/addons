@@ -26,11 +26,10 @@ Adds a **Product Template Attribute Lines** menu, with the attribute
 lines of all products in one list: which attributes each product
 template has, and with which values.
 
-<<<<<<< HEAD
-This Odoo module enhances the user interface by providing a dedicated
-menu item for managing ``product.template.attribute.line`` records. This
-improves accessibility and streamlines workflows related to product
-attribute configuration.
+<<<<<<< HEAD This Odoo module enhances the user interface by providing a
+dedicated menu item for managing ``product.template.attribute.line``
+records. This improves accessibility and streamlines workflows related
+to product attribute configuration.
 
 Features
 --------
@@ -81,12 +80,14 @@ Technical Details
   list view of ``product.template.attribute.line``.
 - It overrides the default tree view of
   ``product.template.attribute.line`` to set the ``create`` attribute to
-  "1", enabling record creation.
-=======
-The list allows creating records, so attribute lines can be added with
-**New** and imported with **Import records**, without opening each
-product.
->>>>>>> [IMP] product_template_attribute_line: Odoo Apps page and cover
+  "1", enabling record creation. ======= The list allows creating
+  records, so attribute lines can be added with **New** and imported
+  with **Import records**, without opening each product.
+
+..
+
+                     [IMP] product_template_attribute_line: Odoo Apps
+                     page and cover
 
 **Table of contents**
 
@@ -105,7 +106,7 @@ Usage
 =====
 
 1. Enable *Variants* in *Sales > Configuration > Settings*.
-2. Go to *Sales > Configuration > Product Template Attribute Lines*.
+2. Go to *Sales > Products > Product Template Attribute Lines*.
 3. Search, group or export the lines, add one with **New**, or import
    them from the gear menu with **Import records**.
 
