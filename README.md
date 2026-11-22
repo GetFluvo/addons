@@ -1,4 +1,6 @@
 
+
+# Tools for Data Import / Export
 <!-- /!\ Non OCA Context : Set here the badge of your runbot / runboat instance. -->
 [![Pre-commit Status](https://github.com/GetFluvo/addons/actions/workflows/pre-commit.yml/badge.svg?branch=20.0)](https://github.com/GetFluvo/addons/actions/workflows/pre-commit.yml?query=branch%3A20.0)
 [![Build Status](https://github.com/GetFluvo/addons/actions/workflows/test.yml/badge.svg?branch=20.0)](https://github.com/GetFluvo/addons/actions/workflows/test.yml?query=branch%3A20.0)
@@ -6,8 +8,6 @@
 <!-- /!\ Non OCA Context : Set here the badge of your translation instance. -->
 
 <!-- /!\ do not modify above this line -->
-
-# Tools for Data Import / Export
 
 Helper odoo modules to ease the data import / export.
 
@@ -17,6 +17,12 @@ Helper odoo modules to ease the data import / export.
 
 [//]: # (addons)
 
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[product_template_attribute_line](product_template_attribute_line/) | 20.0.1.0.0 |  | Adds a menu item for product.template.attribute.line
+[product_template_attribute_value_xmlid](product_template_attribute_value_xmlid/) | 20.0.1.0.0 |  | Generates predictable XML IDs for product.template.attribute.value records based on template and attribute values. These can be used to generate predictable combinations for product.product records.
 
 [//]: # (end addons)
 
