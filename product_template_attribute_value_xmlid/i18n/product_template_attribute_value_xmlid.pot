@@ -14,6 +14,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_template_attribute_value_xmlid
+#. odoo-python
+#: code:addons/product_template_attribute_value_xmlid/models/product_template_attribute_value.py:0
+msgid ""
+"%(count)s XML IDs for product template attribute values have been generated."
+msgstr ""
+
+#. module: product_template_attribute_value_xmlid
 #: model_terms:ir.ui.view,arch_db:product_template_attribute_value_xmlid.view_product_template_attribute_value_form_button
 msgid "Generate XML IDs"
 msgstr ""
@@ -38,10 +45,4 @@ msgstr ""
 #. odoo-python
 #: code:addons/product_template_attribute_value_xmlid/models/product_template_attribute_value.py:0
 msgid "XML IDs Created"
-msgstr ""
-
-#. module: product_template_attribute_value_xmlid
-#. odoo-python
-#: code:addons/product_template_attribute_value_xmlid/models/product_template_attribute_value.py:0
-msgid "XML IDs for product.template.attribute.value"
 msgstr ""
