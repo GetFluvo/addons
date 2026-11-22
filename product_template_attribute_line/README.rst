@@ -36,9 +36,9 @@ Features
 - **Dedicated Menu Item:**
 
   - Adds a new menu item labeled "Product Template Attribute Lines."
-  - This menu item is located under **Sales > Configuration >
-    Products**, providing a clear and logical placement for users
-    working with product attributes.
+  - This menu item is located under **Sales > Products**, providing a
+    clear and logical placement for users working with product
+    attributes.
 
 - **Direct Access to List View:**
 
@@ -69,8 +69,8 @@ Benefits
 Usage
 -----
 
-After installing the module, navigate to **Sales > Configuration >
-Products** to find the new "Product Template Attribute Lines" menu item.
+After installing the module, navigate to **Sales > Products** to find
+the new "Product Template Attribute Lines" menu item.
 
 Technical Details
 -----------------

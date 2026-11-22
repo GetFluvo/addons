@@ -3,7 +3,7 @@
 
 {
     "name": "Product Template Attribute Lines Menu",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "summary": "Adds a menu item for product.template.attribute.line",
     "author": "Fluvo",
     "website": "https://github.com/GetFluvo/addons",
