@@ -1,0 +1,84 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* import_res_id
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: import_res_id
+#: model:ir.model,name:import_res_id.model_ir_attachment
+msgid "Attachment"
+msgstr "Bijlage"
+
+#. module: import_res_id
+#: model:ir.model.fields,field_description:import_res_id.field_import_res_id_mixin__display_name
+#: model:ir.model.fields,field_description:import_res_id.field_ir_attachment__display_name
+#: model:ir.model.fields,field_description:import_res_id.field_mail_message__display_name
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#. module: import_res_id
+#: model:ir.model.fields,field_description:import_res_id.field_import_res_id_mixin__res_external_id
+#: model:ir.model.fields,field_description:import_res_id.field_ir_attachment__res_external_id
+#: model:ir.model.fields,field_description:import_res_id.field_mail_mail__res_external_id
+#: model:ir.model.fields,field_description:import_res_id.field_mail_message__res_external_id
+msgid "Document XML ID"
+msgstr "XML-ID van document"
+
+#. module: import_res_id
+#. odoo-python
+#: code:addons/import_res_id/models/import_res_id_mixin.py:0
+msgid ""
+"Document XML ID %(xmlid)s does not exist. It must be the complete XML ID, as"
+" module.name."
+msgstr ""
+"XML-ID %(xmlid)s van het document bestaat niet. Het moet de volledige XML-ID"
+" zijn, als module.naam."
+
+#. module: import_res_id
+#: model:ir.model,name:import_res_id.model_import_res_id_mixin
+msgid "Document by XML ID"
+msgstr "Document via XML-ID"
+
+#. module: import_res_id
+#: model:ir.model.fields,field_description:import_res_id.field_import_res_id_mixin__id
+#: model:ir.model.fields,field_description:import_res_id.field_ir_attachment__id
+#: model:ir.model.fields,field_description:import_res_id.field_mail_message__id
+msgid "ID"
+msgstr "ID"
+
+#. module: import_res_id
+#: model:ir.module.module,shortdesc:base.module_import_res_id
+msgid "Import Res ID"
+msgstr "Res-ID importeren"
+
+#. module: import_res_id
+#: model:ir.module.module,summary:base.module_import_res_id
+msgid "Link imported messages and attachments to records by XML ID"
+msgstr "Geïmporteerde berichten en bijlagen via XML-ID aan records koppelen"
+
+#. module: import_res_id
+#: model:ir.model,name:import_res_id.model_mail_message
+msgid "Message"
+msgstr "Bericht"
+
+#. module: import_res_id
+#: model:ir.model.fields,help:import_res_id.field_import_res_id_mixin__res_external_id
+#: model:ir.model.fields,help:import_res_id.field_ir_attachment__res_external_id
+#: model:ir.model.fields,help:import_res_id.field_mail_mail__res_external_id
+#: model:ir.model.fields,help:import_res_id.field_mail_message__res_external_id
+msgid ""
+"XML ID of the document, as module.name. Setting it sets the model and the id"
+" of the document."
+msgstr ""
+"XML-ID van het document, als module.naam. Hiermee worden het model en de ID "
+"van het document ingesteld."
