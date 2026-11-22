@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [product_template_attribute_line](product_template_attribute_line/) | 19.0.1.0.0 |  | Adds a menu item for product.template.attribute.line
-[product_template_attribute_value_xmlid](product_template_attribute_value_xmlid/) | 19.0.1.0.0 |  | Generates predictable XML IDs for product.template.attribute.value records based on template and attribute values. These can be used to generate predictable combinations for product.product records.
+[product_template_attribute_value_xmlid](product_template_attribute_value_xmlid/) | 19.0.1.0.1 |  | Predictable XML IDs for product variant attribute values
 
 [//]: # (end addons)
 
