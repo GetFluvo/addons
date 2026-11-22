@@ -23,8 +23,12 @@
 
     <record id="menu_product_template_attribute_value" model="ir.ui.menu">
         <field name="name">Product Template Attribute Values</field>
-        <field name="parent_id" ref="sale.prod_config_main" />
-        <field name="sequence">50</field>
+        <field name="parent_id" ref="sale.product_menu_catalog" />
+        <field name="sequence">35</field>
+        <field
+            name="group_ids"
+            eval="[Command.link(ref('product.group_product_variant'))]"
+        />
         <field name="action" ref="action_product_template_attribute_value" />
     </record>
 

@@ -4,7 +4,7 @@ product template.
 To generate the XML IDs of records that existed before the module was
 installed:
 
-1.  Go to *Sales \> Configuration \> Product Template Attribute Values*.
+1.  Go to *Sales \> Products \> Product Template Attribute Values*.
 2.  Open any record.
 3.  Click *Generate XML IDs*.
 
