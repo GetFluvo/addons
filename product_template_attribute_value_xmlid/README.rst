@@ -22,42 +22,22 @@ Generate XML IDs for Product Template Attribute Values
 
 |badge1| |badge2| |badge3|
 
-This Odoo module automates the generation of XML IDs for
-product.template.attribute.value records. These records define the
-specific combinations of attributes and their values used to create
-product variants (e.g., "Color: Red, Size: Large").
+This module gives every ``product.template.attribute.value`` record a
+predictable XML ID, so that product variants can be referenced in
+imports and integrations without looking up database ids.
 
-Functionality:
---------------
+When Odoo creates a template attribute value, the module adds an XML ID
+``product_template_attribute_value.<template>_<value>``, where:
 
-Automatic XML ID Generation:
+- ``<template>`` is the name of the XML ID of the product template;
+- ``<value>`` is the name of the XML ID of the attribute value.
 
-The module overrides the create() method of the
-product.template.attribute.value model. Whenever a new
-product.template.attribute.value record is created, the module
-automatically generates an XML ID for it. XML ID Naming Convention:
+Characters other than letters, digits and underscores are replaced by
+``_``.
 
-The generated XML ID follows a predefined pattern, composed of the XML
-IDs of the related records: prod_templ_id.xmlid: The XML ID of the
-associated product.template. attribute_id.xmlid: The XML ID of the
-associated product.attribute. attribute_value_id.xmlid: The XML ID of
-the associated product.attribute.value.
-
-The parts are combined with underscorese. This ensures that the XML ID
-is predictable and reflects the specific attribute value combination.
-
-Manual XML ID Generation:
--------------------------
-
-The module also provides a method (generate_attribute_value_xmlids) that
-can be manually triggered to generate XML IDs for existing
-product.template.attribute.value records that might not have them.
-Benefits:
-
-Predictability: Ensures consistent and predictable XML IDs. Automation:
-Automates the XML ID creation process. Data Integrity: Maintains data
-integrity by generating unique XML IDs. Integration: Simplifies
-integration with external systems.
+No XML ID is generated when the template or the attribute value has no
+XML ID (the result would not be predictable), or when the name is
+already used by another record; the latter is logged as a warning.
 
 **Table of contents**
 
@@ -110,89 +90,24 @@ To configure this module, you need to:
 Usage
 =====
 
-Usage Guide: ``product_template_attribute_value_xmlid`` Module
-==============================================================
+XML IDs are generated automatically when attribute values are added to a
+product template.
 
-This document provides instructions on how to use the
-``product_template_attribute_value_xmlid`` module in Odoo.
+To generate the XML IDs of records that existed before the module was
+installed:
 
-Purpose
--------
+1. Go to *Sales > Configuration > Product Template Attribute Values*.
+2. Open any record.
+3. Click *Generate XML IDs*.
 
-The ``product_template_attribute_value_xmlid`` module automates the
-generation of XML IDs for ``product.template.attribute.value`` records,
-which represent specific combinations of product attributes and their
-values. This is crucial for data integration and automation purposes.
-
-Automatic XML ID Generation
----------------------------
-
-Once installed, the module automatically generates XML IDs for new
-``product.template.attribute.value`` records. You don't need to perform
-any manual steps for this.
-
-**Example:**
-
-When you create a new product template with attributes (e.g., Color:
-Red, Size: Large), the corresponding
-``product.template.attribute.value`` records created by Odoo will
-automatically receive XML IDs.
-
-Manual XML ID Generation (Optional)
------------------------------------
-
-In some cases, you might have existing
-``product.template.attribute.value`` records that were created before
-installing this module and therefore lack XML IDs. The module provides a
-method to generate XML IDs for these records.
-
-**Steps:**
-
-1. Navigate to the "Product Attribute Values" in the "Product" module.
-2. Open any form view of a ``product.template.attribute.value`` record.
-3. Click the "Generate XML IDs" button.
-4. Odoo will generate XML IDs for all
-   ``product.template.attribute.value`` records that currently don't
-   have them.
-
-XML ID Naming Convention
-------------------------
-
-The generated XML IDs follow this pattern:
-prod_templ\_<product_template_xmlid>\ *attr*\ <attribute_xmlid>\ *val*\ <attribute_value_xmlid>
-
-**Example:** prod_templ_product_template_123_attr_color_val_red
-
--  ``prod_templ_``: Prefix indicating "product template."
--  ``<product_template_xmlid>``: The XML ID of the related
-   ``product.template`` record.
--  ``attr_``: Prefix indicating "attribute."
--  ``<attribute_xmlid>``: The XML ID of the related
-   ``product.attribute`` record.
--  ``val_``: Prefix indicating "attribute value."
--  ``<attribute_value_xmlid>``: The XML ID of the related
-   ``product.attribute.value`` record.
-
-**Note:**
-
--  All parts of the XML ID are converted to lowercase.
--  Spaces are replaced with underscores.
-
-Important Considerations
-------------------------
-
--  Ensure that the related ``product.template``, ``product.attribute``,
-   and ``product.attribute.value`` records have XML IDs for the
-   automatic generation to work correctly.
--  The module aims to generate unique XML IDs. However, if you have
-   existing data with conflicting names or IDs, you might need to
-   resolve those conflicts manually.
+All template attribute values without a generated XML ID get one, if
+their template and attribute value have an XML ID.
 
 Known issues / Roadmap
 ======================
 
--  This module might result in unpredictable behaviour when used with
-   enterprise module ``product_barcodelookup``.
+- This module might result in unpredictable behaviour when used with
+  enterprise module ``product_barcodelookup``.
 
 Changelog
 =========
@@ -220,7 +135,7 @@ Authors
 Contributors
 ------------
 
--  bosd
+- bosd
 
 Other credits
 -------------
