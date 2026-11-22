@@ -2,9 +2,9 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
 {
-    "name": "Product Template Attribute Lines Menu",
-    "version": "20.0.1.0.0",
-    "summary": "Adds a menu item for product.template.attribute.line",
+    "name": "Product Attribute Lines",
+    "version": "20.0.1.0.1",
+    "summary": "A menu with the attribute lines of all products",
     "author": "Fluvo",
     "website": "https://github.com/GetFluvo/addons",
     "category": "Technical Settings",
@@ -14,6 +14,7 @@
     "data": [
         "views/product_template_attribute_line_views.xml",
     ],
+    "images": ["static/description/banner.png"],
     "license": "LGPL-3",
     "installable": True,
 }
