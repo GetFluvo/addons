@@ -110,7 +110,7 @@ class TestImportResId(TransactionCase):
     def test_load_chatter(self):
         """Import attachments, then messages with them, on a partner."""
         result = self.env["ir.attachment"].load(
-            ["id", "name", "raw", "res_external_id"],
+            ["id", "name", "datas", "res_external_id"],
             [
                 [
                     "legacy.attachment_1",
@@ -122,7 +122,7 @@ class TestImportResId(TransactionCase):
         )
         self.assertFalse(result["messages"], result["messages"])
         attachment = self.env.ref("legacy.attachment_1")
-        self.assertEqual(attachment.raw.content, b"hello")
+        self.assertEqual(attachment.raw, b"hello")
         result = self.env["mail.message"].load(
             ["body", "message_type", "res_external_id", "attachment_ids/id"],
             [["<p>Old note</p>", "comment", "legacy.customer", "legacy.attachment_1"]],
