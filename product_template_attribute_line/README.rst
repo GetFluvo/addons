@@ -1,6 +1,6 @@
-=====================================
-Product Template Attribute Lines Menu
-=====================================
+=======================
+Product Attribute Lines
+=======================
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -22,64 +22,13 @@ Product Template Attribute Lines Menu
 
 |badge1| |badge2| |badge3|
 
-Product Template Attribute Lines Menu
-=====================================
+Adds a **Product Template Attribute Lines** menu, with the attribute
+lines of all products in one list: which attributes each product
+template has, and with which values.
 
-This Odoo module enhances the user interface by providing a dedicated
-menu item for managing ``product.template.attribute.line`` records. This
-improves accessibility and streamlines workflows related to product
-attribute configuration.
-
-Features
---------
-
-- **Dedicated Menu Item:**
-
-  - Adds a new menu item labeled "Product Template Attribute Lines."
-  - This menu item is located under **Sales > Configuration >
-    Products**, providing a clear and logical placement for users
-    working with product attributes.
-
-- **Direct Access to List View:**
-
-  - The menu item opens a list view of the
-    ``product.template.attribute.line`` model.
-  - This allows users to quickly view, search, and manage existing
-    attribute lines.
-
-- **Enabled Record Creation:**
-
-  - The module overrides the default tree view of
-    ``product.template.attribute.line`` to enable the creation of new
-    records directly from the list view.
-  - This simplifies the process of adding new attribute lines,
-    especially when importing data or configuring products.
-
-Benefits
---------
-
-- **Improved User Experience:** Provides a more intuitive and efficient
-  way to access and manage product template attribute lines.
-- **Streamlined Workflows:** Reduces the number of clicks and navigation
-  steps required for common attribute configuration tasks.
-- **Simplified Data Import:** Facilitates the import of
-  ``product.template.attribute.line`` data by enabling direct creation
-  of records from the list view.
-
-Usage
------
-
-After installing the module, navigate to **Sales > Configuration >
-Products** to find the new "Product Template Attribute Lines" menu item.
-
-Technical Details
------------------
-
-- The module defines an ``ir.actions.act_window`` action to open the
-  list view of ``product.template.attribute.line``.
-- It overrides the default tree view of
-  ``product.template.attribute.line`` to set the ``create`` attribute to
-  "1", enabling record creation.
+The list allows creating records, so attribute lines can be added with
+**New** and imported with **Import records**, without opening each
+product.
 
 **Table of contents**
 
@@ -89,43 +38,18 @@ Technical Details
 Use Cases / Context
 ===================
 
-Purpose:
---------
-
-The module adds a Adds a menu item for product.template.attribute.line
-for easier debugging of product variants.
-
-Installation
-============
-
-
-
-Configuration
-=============
-
-To configure this module, you need to:
-
-1. Ensure that the ``product`` module is installed in your Odoo
-   instance, as this module is a dependency.
-2. Place the ``product_template_attribute_line`` module directory in
-   your Odoo addons path.
-3. Install the ``product_template_attribute_line`` module through the
-   Odoo Apps interface.
+In standard Odoo, the attributes of a product are only visible on the
+product form, one product at a time. Checking the variants of a whole
+catalogue, or importing the attributes of many products, needs a list of
+all attribute lines.
 
 Usage
 =====
 
-
-
-Known issues / Roadmap
-======================
-
-
-
-Changelog
-=========
-
-
+1. Enable *Variants* in *Sales > Configuration > Settings*.
+2. Go to *Sales > Configuration > Product Template Attribute Lines*.
+3. Search, group or export the lines, add one with **New**, or import
+   them from the gear menu with **Import records**.
 
 Bug Tracker
 ===========
@@ -149,11 +73,6 @@ Contributors
 ------------
 
 - bosd
-
-Other credits
--------------
-
-
 
 Maintainers
 -----------
