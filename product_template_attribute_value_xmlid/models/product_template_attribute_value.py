@@ -1,109 +1,133 @@
+# Copyright 2025 Strategic Efficiency B.V.
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
+
+import logging
+import re
+
 from odoo import _, api, models
 
+_logger = logging.getLogger(__name__)
 
-class ProductTemplateAttributeValueXMLID(models.Model):
+# Namespace of the generated XML IDs. Deliberately not the name of this
+# module: on uninstall Odoo deletes every record referenced by an XML ID of
+# the module, which would delete the product.template.attribute.value records.
+XMLID_MODULE = "product_template_attribute_value"
+
+
+class ProductTemplateAttributeValue(models.Model):
     _inherit = "product.template.attribute.value"
 
     @api.model_create_multi
     def create(self, vals_list):
-        """
-        Overrides the create method to automatically generate XML IDs.
-        """
+        """Generate the XML IDs of the new records."""
         records = super().create(vals_list)
-        for record in records:
-            self._generate_xmlid_for_record(
-                record
-            )  # Generate XML ID for each new record
+        records._generate_xmlids()
         return records
 
-    def _generate_xmlid_for_record(self, attribute_value):
-        """
-        Generates the XML ID for a given product.template.attribute.value record.
-        """
-        # 2. Generate the XML ID using XML IDs of related records
-        prod_templ_id = (
-            self._get_xml_id(attribute_value.product_tmpl_id)
-            if attribute_value.product_tmpl_id
-            else ""
-        )
-        (
-            self._get_xml_id(attribute_value.attribute_id)
-            if attribute_value.attribute_id
-            else ""
-        )
-        attribute_value_id = (
-            self._get_xml_id(attribute_value.product_attribute_value_id)
-            if attribute_value.product_attribute_value_id
-            else ""
-        )
+    def _get_generated_xmlid_name(self):
+        """Return the XML ID name for this record, or ``""`` if none can be made.
 
-        xml_id = f"{prod_templ_id}_{attribute_value_id}".replace(" ", "_")
+        The name is ``<template XML ID name>_<attribute value XML ID name>``.
+        Without an XML ID on the template or on the attribute value the name
+        would not be predictable, so none is returned.
+        """
+        self.ensure_one()
+        template_name = self._get_xmlid_name(self.product_tmpl_id)
+        value_name = self._get_xmlid_name(self.product_attribute_value_id)
+        if not template_name or not value_name:
+            return ""
+        return re.sub(r"\W", "_", f"{template_name}_{value_name}")
 
-        # 3. Create the ir.model.data record
-        try:
-            self.env["ir.model.data"].create(
+    def _generate_xmlids(self):
+        """Create the XML IDs of the records in ``self`` that can get one.
+
+        A record is skipped when no predictable name can be made for it, or
+        when that name is already taken by another record.
+        """
+        IrModelData = self.env["ir.model.data"].sudo()
+        names = {}
+        for record in self:
+            name = record._get_generated_xmlid_name()
+            if name:
+                names[record] = name
+        if not names:
+            return self.browse()
+        taken = {
+            data.name: data.res_id
+            for data in IrModelData.search(
+                [
+                    ("module", "=", XMLID_MODULE),
+                    ("name", "in", list(names.values())),
+                ]
+            )
+        }
+        vals_list = []
+        created = self.browse()
+        for record, name in names.items():
+            if name in taken:
+                if taken[name] != record.id:
+                    _logger.warning(
+                        "XML ID %s.%s already points to %s(%s), not set on %s",
+                        XMLID_MODULE,
+                        name,
+                        self._name,
+                        taken[name],
+                        record,
+                    )
+                continue
+            taken[name] = record.id
+            created |= record
+            vals_list.append(
                 {
-                    "module": "product_template_attribute_value",
-                    "name": xml_id,
-                    "model": "product.template.attribute.value",
-                    "res_id": attribute_value.id,
+                    "module": XMLID_MODULE,
+                    "name": name,
+                    "model": self._name,
+                    "res_id": record.id,
                     "noupdate": True,
                 }
             )
-        except Exception as e:
-            # self.env.cr.rollback()  # Removed direct cr.rollback()
-            # self.env.cr.commit()    # Removed direct cr.commit()
-            self.env.logger.error(
-                f"Error creating XML ID for product.template.attribute.value: {e}"
-            )
-            raise  # Re-raise the exception to allow Odoo to handle it
+        IrModelData.create(vals_list)
+        return created
 
     @api.model
     def generate_attribute_value_xmlids(self, *args):
+        """Generate the missing XML IDs of all product.template.attribute.value.
+
+        ``*args`` takes the record ids that a button of type ``object`` passes.
         """
-        Generates XML IDs for product.template.attribute.value records
-        using the format: XMLID = prod_templ_id + attribute_id + attribute_value_id
-        """
-        # 1. Get the product.template.attribute.value records that DO NOT have an XML ID
-        attribute_values_without_xmlid = self.env[
-            "product.template.attribute.value"
-        ].search(
-            [
-                (
-                    "id",
-                    "not in",
-                    self.env["ir.model.data"]
-                    .search([("model", "=", "product.template.attribute.value")])
-                    .mapped("res_id"),
-                )
-            ]
+        with_xmlid = (
+            self.env["ir.model.data"]
+            .sudo()
+            .search([("module", "=", XMLID_MODULE), ("model", "=", self._name)])
+            .mapped("res_id")
         )
-
-        for attribute_value in attribute_values_without_xmlid:
-            self._generate_xmlid_for_record(attribute_value)
-
+        created = self.search([("id", "not in", with_xmlid)])._generate_xmlids()
         return {
             "type": "ir.actions.client",
             "tag": "display_notification",
             "params": {
                 "title": _("XML IDs Created"),
                 "message": _(
-                    "XML IDs for product.template.attribute.value",
-                    "records have been generated.",
+                    "%(count)s XML IDs for product template attribute values "
+                    "have been generated.",
+                    count=len(created),
                 ),
                 "type": "success",
             },
         }
 
-    def _get_xml_id(self, record):
-        """Helper function to get the XML ID of a record."""
+    @api.model
+    def _get_xmlid_name(self, record):
+        """Return the name, without module, of the first XML ID of ``record``."""
         if not record:
             return ""
-        xml_ids = self.env["ir.model.data"].search(
-            [
-                ("model", "=", record._name),
-                ("res_id", "=", record.id),
-            ],
-            limit=1,
+        data = (
+            self.env["ir.model.data"]
+            .sudo()
+            .search(
+                [("model", "=", record._name), ("res_id", "=", record.id)],
+                order="id",
+                limit=1,
+            )
         )
-        return xml_ids.name if xml_ids else ""
+        return data.name or ""
