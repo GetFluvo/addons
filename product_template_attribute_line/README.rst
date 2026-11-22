@@ -1,6 +1,6 @@
-=====================================
-Product Template Attribute Lines Menu
-=====================================
+=======================
+Product Attribute Lines
+=======================
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -22,13 +22,14 @@ Product Template Attribute Lines Menu
 
 |badge1| |badge2| |badge3|
 
-Product Template Attribute Lines Menu
-=====================================
+Adds a **Product Template Attribute Lines** menu, with the attribute
+lines of all products in one list: which attributes each product
+template has, and with which values.
 
-This Odoo module enhances the user interface by providing a dedicated
-menu item for managing ``product.template.attribute.line`` records. This
-improves accessibility and streamlines workflows related to product
-attribute configuration.
+<<<<<<< HEAD This Odoo module enhances the user interface by providing a
+dedicated menu item for managing ``product.template.attribute.line``
+records. This improves accessibility and streamlines workflows related
+to product attribute configuration.
 
 Features
 --------
@@ -79,7 +80,14 @@ Technical Details
   list view of ``product.template.attribute.line``.
 - It overrides the default tree view of
   ``product.template.attribute.line`` to set the ``create`` attribute to
-  "1", enabling record creation.
+  "1", enabling record creation. ======= The list allows creating
+  records, so attribute lines can be added with **New** and imported
+  with **Import records**, without opening each product.
+
+..
+
+                     [IMP] product_template_attribute_line: Odoo Apps
+                     page and cover
 
 **Table of contents**
 
@@ -89,43 +97,18 @@ Technical Details
 Use Cases / Context
 ===================
 
-Purpose:
---------
-
-The module adds a Adds a menu item for product.template.attribute.line
-for easier debugging of product variants.
-
-Installation
-============
-
-
-
-Configuration
-=============
-
-To configure this module, you need to:
-
-1. Ensure that the ``product`` module is installed in your Odoo
-   instance, as this module is a dependency.
-2. Place the ``product_template_attribute_line`` module directory in
-   your Odoo addons path.
-3. Install the ``product_template_attribute_line`` module through the
-   Odoo Apps interface.
+In standard Odoo, the attributes of a product are only visible on the
+product form, one product at a time. Checking the variants of a whole
+catalogue, or importing the attributes of many products, needs a list of
+all attribute lines.
 
 Usage
 =====
 
-
-
-Known issues / Roadmap
-======================
-
-
-
-Changelog
-=========
-
-
+1. Enable *Variants* in *Sales > Configuration > Settings*.
+2. Go to *Sales > Products > Product Template Attribute Lines*.
+3. Search, group or export the lines, add one with **New**, or import
+   them from the gear menu with **Import records**.
 
 Bug Tracker
 ===========
@@ -149,11 +132,6 @@ Contributors
 ------------
 
 - bosd
-
-Other credits
--------------
-
-
 
 Maintainers
 -----------

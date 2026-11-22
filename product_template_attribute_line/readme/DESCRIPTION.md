@@ -1,5 +1,8 @@
-# Product Template Attribute Lines Menu
+Adds a **Product Template Attribute Lines** menu, with the attribute lines of
+all products in one list: which attributes each product template has, and
+with which values.
 
+<<<<<<< HEAD
 This Odoo module enhances the user interface by providing a dedicated menu item for managing `product.template.attribute.line` records. This improves accessibility and streamlines workflows related to product attribute configuration.
 
 ## Features
@@ -30,3 +33,7 @@ After installing the module, navigate to **Sales > Products** to find the new "P
 
 * The module defines an `ir.actions.act_window` action to open the list view of `product.template.attribute.line`.
 * It overrides the default tree view of `product.template.attribute.line` to set the `create` attribute to "1", enabling record creation.
+=======
+The list allows creating records, so attribute lines can be added with
+**New** and imported with **Import records**, without opening each product.
+>>>>>>> [IMP] product_template_attribute_line: Odoo Apps page and cover
