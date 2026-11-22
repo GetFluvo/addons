@@ -18,5 +18,4 @@
     ],
     "license": "LGPL-3",
     "installable": True,
-    "cloc_exclude": [],
 }
