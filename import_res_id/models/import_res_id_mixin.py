@@ -9,7 +9,8 @@ class ImportResIdMixin(models.AbstractModel):
     """Set the document of a record by the XML ID of that document.
 
     For models that link to any document with a model name field and a
-    ``res_id`` field, like ``mail.message`` and ``ir.attachment``.
+    ``res_id`` field, like ``mail.message``, ``ir.attachment`` and
+    ``mail.activity``.
     """
 
     _name = "import.res.id.mixin"
@@ -57,6 +58,11 @@ class ImportResIdMixin(models.AbstractModel):
                     xmlid=xmlid,
                 )
             )
-        vals[self._res_model_field] = model
+        self._import_res_id_set_model(vals, model)
         vals["res_id"] = res_id
         return vals
+
+    @api.model
+    def _import_res_id_set_model(self, vals, model):
+        """Set the model of the document, named ``model``, in ``vals``."""
+        vals[self._res_model_field] = model
