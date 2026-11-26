@@ -134,3 +134,53 @@ class TestImportResId(TransactionCase):
         self.assertEqual(
             (attachment.res_model, attachment.res_id), ("res.partner", self.partner.id)
         )
+
+    def test_load_activity(self):
+        """Import a to-do with deadline and assignee on a partner."""
+        result = self.env["mail.activity"].load(
+            [
+                "activity_type_id/id",
+                "summary",
+                "date_deadline",
+                "user_id/id",
+                "res_external_id",
+            ],
+            [
+                [
+                    "mail.mail_activity_data_todo",
+                    "Call back",
+                    "2026-12-01",
+                    "base.user_admin",
+                    "legacy.customer",
+                ]
+            ],
+        )
+        self.assertFalse(result["messages"], result["messages"])
+        activity = self.env["mail.activity"].browse(result["ids"])
+        self.assertEqual(
+            (activity.res_model, activity.res_id, activity.res_name),
+            ("res.partner", self.partner.id, "Old Customer"),
+        )
+        self.assertEqual(activity.res_external_id, "legacy.customer")
+        self.assertIn(activity, self.partner.activity_ids)
+
+    def test_activity_write(self):
+        activity = self.env["mail.activity"].create(
+            {
+                "activity_type_id": self.env.ref("mail.mail_activity_data_todo").id,
+                "res_external_id": "legacy.customer",
+            }
+        )
+        activity.write({"res_external_id": "legacy.other"})
+        self.assertEqual(
+            (activity.res_model, activity.res_id), ("res.partner", self.partner2.id)
+        )
+
+    def test_activity_unknown_xmlid(self):
+        with self.assertRaises(ValidationError):
+            self.env["mail.activity"].create(
+                {
+                    "activity_type_id": self.env.ref("mail.mail_activity_data_todo").id,
+                    "res_external_id": "legacy.missing",
+                }
+            )

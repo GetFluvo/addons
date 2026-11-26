@@ -23,12 +23,15 @@ Import Res ID
 |badge1| |badge2| |badge3|
 
 Adds a *Document XML ID* field, ``res_external_id``, to messages
-(``mail.message``) and attachments (``ir.attachment``), to link them to
-their document by the XML ID of that document.
+(``mail.message``), attachments (``ir.attachment``) and activities
+(``mail.activity``), to link them to their document by the XML ID of
+that document.
 
-Messages and attachments point to their document with a model name and a
-database id, which an import file cannot know. With this field, chatter
-messages and attachments can be imported for records imported earlier.
+Messages, attachments and activities point to their document with a
+model and a database id, which an import file cannot know. With this
+field, chatter messages, attachments and activities, such as to-dos and
+calls with a deadline and an assignee, can be imported for records
+imported earlier.
 
 **Table of contents**
 
@@ -46,15 +49,21 @@ after the documents are imported.
 Usage
 =====
 
-Import messages or attachments with a ``res_external_id`` column holding
-the complete XML ID of the document, as ``module.name``. The model and
-the id of the document are set from it:
+Import messages, attachments or activities with a ``res_external_id``
+column holding the complete XML ID of the document, as ``module.name``.
+The model and the id of the document are set from it:
 
 +--------------------------------+--------------+-----------------------+-------------------------+
 | body                           | message_type | res_external_id       | attachment_ids/id       |
 +================================+==============+=======================+=========================+
 | ``<p>Called the customer</p>`` | comment      | ``legacy.partner_42`` | ``legacy.attachment_7`` |
 +--------------------------------+--------------+-----------------------+-------------------------+
+
++----------------------------------+-----------+---------------+---------------------+-----------------------+
+| activity_type_id/id              | summary   | date_deadline | user_id/id          | res_external_id       |
++==================================+===========+===============+=====================+=======================+
+| ``mail.mail_activity_data_call`` | Call back | 2026-12-01    | ``base.user_admin`` | ``legacy.partner_42`` |
++----------------------------------+-----------+---------------+---------------------+-----------------------+
 
 The field can also be given to ``create()`` and ``write()``, and is
 filled in exports with the first XML ID of the document.

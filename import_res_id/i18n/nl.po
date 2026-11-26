@@ -133,6 +133,11 @@ msgid ""
 msgstr ""
 
 #. module: import_res_id
+#: model:ir.model,name:import_res_id.model_mail_activity
+msgid "Activity"
+msgstr "Activiteit"
+
+#. module: import_res_id
 #: model:ir.model,name:import_res_id.model_ir_attachment
 msgid "Attachment"
 msgstr "Bijlage"
@@ -140,6 +145,7 @@ msgstr "Bijlage"
 #. module: import_res_id
 #: model:ir.model.fields,field_description:import_res_id.field_import_res_id_mixin__display_name
 #: model:ir.model.fields,field_description:import_res_id.field_ir_attachment__display_name
+#: model:ir.model.fields,field_description:import_res_id.field_mail_activity__display_name
 #: model:ir.model.fields,field_description:import_res_id.field_mail_message__display_name
 msgid "Display Name"
 msgstr "Weergavenaam"
@@ -147,6 +153,7 @@ msgstr "Weergavenaam"
 #. module: import_res_id
 #: model:ir.model.fields,field_description:import_res_id.field_import_res_id_mixin__res_external_id
 #: model:ir.model.fields,field_description:import_res_id.field_ir_attachment__res_external_id
+#: model:ir.model.fields,field_description:import_res_id.field_mail_activity__res_external_id
 #: model:ir.model.fields,field_description:import_res_id.field_mail_mail__res_external_id
 #: model:ir.model.fields,field_description:import_res_id.field_mail_message__res_external_id
 msgid "Document XML ID"
@@ -170,6 +177,7 @@ msgstr "Document via XML-ID"
 #. module: import_res_id
 #: model:ir.model.fields,field_description:import_res_id.field_import_res_id_mixin__id
 #: model:ir.model.fields,field_description:import_res_id.field_ir_attachment__id
+#: model:ir.model.fields,field_description:import_res_id.field_mail_activity__id
 #: model:ir.model.fields,field_description:import_res_id.field_mail_message__id
 msgid "ID"
 msgstr "ID"
@@ -181,8 +189,8 @@ msgstr "Res-ID importeren"
 
 #. module: import_res_id
 #: model:ir.module.module,summary:base.module_import_res_id
-msgid "Link imported messages and attachments to records by XML ID"
-msgstr "Geïmporteerde berichten en bijlagen via XML-ID aan records koppelen"
+msgid "Link imported messages, attachments and activities by XML ID"
+msgstr "Geïmporteerde berichten, bijlagen en activiteiten via XML-ID koppelen"
 
 #. module: import_res_id
 #: model:ir.model,name:import_res_id.model_mail_message
@@ -192,6 +200,7 @@ msgstr "Bericht"
 #. module: import_res_id
 #: model:ir.model.fields,help:import_res_id.field_import_res_id_mixin__res_external_id
 #: model:ir.model.fields,help:import_res_id.field_ir_attachment__res_external_id
+#: model:ir.model.fields,help:import_res_id.field_mail_activity__res_external_id
 #: model:ir.model.fields,help:import_res_id.field_mail_mail__res_external_id
 #: model:ir.model.fields,help:import_res_id.field_mail_message__res_external_id
 msgid ""
