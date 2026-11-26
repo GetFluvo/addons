@@ -25,6 +25,7 @@ addon | version | maintainers | summary
 [import_res_id](import_res_id/) | 19.0.1.0.1 |  | Link imported messages and attachments to records by XML ID
 [product_template_attribute_line](product_template_attribute_line/) | 19.0.1.0.1 |  | A menu with the attribute lines of all products
 [product_template_attribute_value_xmlid](product_template_attribute_value_xmlid/) | 19.0.1.0.1 |  | Predictable XML IDs for product variant attribute values
+[product_template_xmlid](product_template_xmlid/) | 19.0.1.0.0 |  | Predictable XML IDs for products created in the interface
 
 [//]: # (end addons)
 
