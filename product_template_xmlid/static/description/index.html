@@ -1,0 +1,178 @@
+<section class="container" style="padding: 32px 16px 8px">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 style="color: #0f5f7d; font-weight: 700; margin-bottom: 8px">
+                Predictable XML IDs for every product
+            </h2>
+            <p class="lead" style="color: #4a5f67; margin-bottom: 24px">
+                Products created in the interface get a stable external ID, so
+                imports, exports and integrations can reference them without
+                looking up database ids.
+            </p>
+            <img
+                src="banner.png"
+                class="img-fluid shadow"
+                alt="Predictable XML IDs for every product"
+                style="border: 1px solid #d7ebef; border-radius: 12px"
+            />
+        </div>
+    </div>
+</section>
+
+<section class="container" style="padding: 32px 16px">
+    <div class="row">
+        <div class="col-md-4" style="margin-bottom: 16px">
+            <div style="border: 1px solid #d7ebef; border-radius: 12px; padding: 20px">
+                <h4 style="color: #177599; font-weight: 700">Automatic</h4>
+                <p style="color: #4a5f67; margin: 0">
+                    Every new product gets its XML ID when it is created: in the
+                    interface, by a quick create, or by an import without an
+                    <em>ID</em> column.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-bottom: 16px">
+            <div style="border: 1px solid #d7ebef; border-radius: 12px; padding: 20px">
+                <h4 style="color: #177599; font-weight: 700">Readable</h4>
+                <p style="color: #4a5f67; margin: 0">
+                    The ID is made from the internal reference, or from the name:
+                    <code>product_template.furn_0001</code> instead of a database
+                    id that differs in every database.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-bottom: 16px">
+            <div style="border: 1px solid #d7ebef; border-radius: 12px; padding: 20px">
+                <h4 style="color: #177599; font-weight: 700">Variants follow</h4>
+                <p style="color: #4a5f67; margin: 0">
+                    With <em>Attribute Value XML IDs</em> installed, the attribute
+                    values of the product get a predictable XML ID too.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container" style="padding: 16px 16px 32px">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="color: #0f5f7d; font-weight: 700; margin-bottom: 16px">
+                How the XML ID is built
+            </h3>
+            <table class="table table-bordered" style="color: #0f2830">
+                <thead style="background: #f6fbfc">
+                    <tr>
+                        <th>Product</th>
+                        <th>XML ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Internal reference <code>FURN-0001</code></td>
+                        <td><code>product_template.furn_0001</code></td>
+                    </tr>
+                    <tr>
+                        <td>No internal reference, name <em>Desk Organizer (Large)</em></td>
+                        <td><code>product_template.desk_organizer_large</code></td>
+                    </tr>
+                    <tr>
+                        <td>No internal reference, name <em>Café Table</em></td>
+                        <td><code>product_template.cafe_table</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul style="color: #4a5f67">
+                <li>
+                    The internal reference is used when there is one, otherwise the
+                    English name of the product.
+                </li>
+                <li>
+                    It is lowercased, accents are removed, and every other character
+                    than a letter or digit is replaced by an underscore.
+                </li>
+                <li>
+                    Products that already have an XML ID, such as products imported
+                    with an <em>ID</em> column or loaded from data files, keep it and
+                    get no second one.
+                </li>
+                <li>
+                    An ID that is already used by another product is never
+                    overwritten; the conflict is logged as a warning.
+                </li>
+            </ul>
+            <img
+                src="screenshot_metadata.png"
+                class="img-fluid shadow"
+                alt="The XML ID of a product in the Metadata dialog"
+                style="border: 1px solid #d7ebef; border-radius: 8px; margin-top: 16px"
+            />
+        </div>
+    </div>
+</section>
+
+<section class="container" style="padding: 16px 16px 32px">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="color: #0f5f7d; font-weight: 700; margin-bottom: 8px">
+                Generate the XML IDs of existing products
+            </h3>
+            <p style="color: #4a5f67">
+                Go to <b>Sales &gt; Products &gt; Products</b>, switch to the list
+                view, select the products and click
+                <b>Actions &gt; Generate XML IDs</b>. Products without an XML ID get
+                one, and Odoo tells you how many of the selected products got one.
+            </p>
+            <img
+                src="screenshot_action.png"
+                class="img-fluid shadow"
+                alt="The Generate XML IDs action on the products list"
+                style="border: 1px solid #d7ebef; border-radius: 8px; margin-bottom: 32px"
+            />
+            <h3 style="color: #0f5f7d; font-weight: 700; margin-bottom: 8px">
+                Find them under External Identifiers
+            </h3>
+            <p style="color: #4a5f67">
+                The XML IDs are regular external identifiers, in the
+                <code>product_template</code> module. Search them in
+                <b>Settings &gt; Technical &gt; External Identifiers</b>, or export
+                them with the <em>ID</em> column of any export. Below them, the
+                attribute values named by <em>Attribute Value XML IDs</em>.
+            </p>
+            <img
+                src="screenshot_xmlids.png"
+                class="img-fluid shadow"
+                alt="Generated XML IDs in the External Identifiers list"
+                style="border: 1px solid #d7ebef; border-radius: 8px"
+            />
+        </div>
+    </div>
+</section>
+
+<section class="container" style="padding: 16px 16px 40px">
+    <div class="row">
+        <div class="col-md-12">
+            <div
+                style="border: 1px solid #f0d58c; border-radius: 12px; padding: 20px 24px"
+            >
+                <h4 style="color: #7d5400; font-weight: 700">Good to know</h4>
+                <ul style="color: #4a5f67; margin: 0">
+                    <li>
+                        The XML ID is made once, when the product is created. It does
+                        not change when the name or internal reference changes later.
+                    </li>
+                    <li>
+                        Product variants get no XML ID of their own.
+                    </li>
+                    <li>
+                        The XML IDs are stored with <em>noupdate</em>, and are kept
+                        when the module is uninstalled.
+                    </li>
+                    <li>
+                        Part of the Fluvo toolset for fast data import and export
+                        in Odoo. Open source under the LGPL-3 license.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
