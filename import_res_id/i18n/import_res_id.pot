@@ -37,6 +37,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:import_res_id.field_mail_activity__res_external_id
 #: model:ir.model.fields,field_description:import_res_id.field_mail_mail__res_external_id
 #: model:ir.model.fields,field_description:import_res_id.field_mail_message__res_external_id
+#: model:ir.model.fields,field_description:import_res_id.field_product_document__res_external_id
 msgid "Document XML ID"
 msgstr ""
 
@@ -72,6 +73,7 @@ msgstr ""
 #: model:ir.model.fields,help:import_res_id.field_mail_activity__res_external_id
 #: model:ir.model.fields,help:import_res_id.field_mail_mail__res_external_id
 #: model:ir.model.fields,help:import_res_id.field_mail_message__res_external_id
+#: model:ir.model.fields,help:import_res_id.field_product_document__res_external_id
 msgid ""
 "XML ID of the document, as module.name. Setting it sets the model and the id"
 " of the document."

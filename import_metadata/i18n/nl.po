@@ -24,15 +24,3 @@ msgstr "%(field)s: gebruiker met ID %(id)s bestaat niet."
 #: model:ir.model,name:import_metadata.model_base
 msgid "Base"
 msgstr "Basis"
-
-#. module: import_metadata
-#: model:ir.module.module,shortdesc:base.module_import_metadata
-msgid "Import Metadata"
-msgstr "Metadata importeren"
-
-#. module: import_metadata
-#: model:ir.module.module,summary:base.module_import_metadata
-msgid "Import the creation and last update user and date of records"
-msgstr ""
-"De gebruiker en datum van aanmaak en laatste wijziging van records "
-"importeren"
