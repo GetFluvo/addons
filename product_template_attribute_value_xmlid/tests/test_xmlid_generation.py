@@ -13,6 +13,11 @@ class TestProductTemplateAttributeValueXMLID(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        # Without the XML IDs that product_template_xmlid, when installed,
+        # gives to new products.
+        cls.env = cls.env(
+            context=dict(cls.env.context, product_template_xmlid_skip=True)
+        )
         cls.attribute = cls.env["product.attribute"].create(
             {"name": "Test Attribute", "create_variant": "always"}
         )
