@@ -3,8 +3,8 @@
 
 {
     "name": "Import Res ID",
-    "version": "20.0.1.0.1",
-    "summary": "Link imported messages and attachments to records by XML ID",
+    "version": "20.0.1.1.0",
+    "summary": "Link imported messages, attachments and activities by XML ID",
     "author": "Fluvo",
     "website": "https://github.com/GetFluvo/addons",
     "category": "Technical Settings",

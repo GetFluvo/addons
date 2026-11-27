@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [import_metadata](import_metadata/) | 20.0.1.0.1 |  | Import the creation and last update user and date of records
-[import_res_id](import_res_id/) | 20.0.1.0.1 |  | Link imported messages and attachments to records by XML ID
+[import_res_id](import_res_id/) | 20.0.1.1.0 |  | Link imported messages, attachments and activities by XML ID
 [product_template_attribute_line](product_template_attribute_line/) | 20.0.1.0.1 |  | A menu with the attribute lines of all products
 [product_template_attribute_value_xmlid](product_template_attribute_value_xmlid/) | 20.0.1.0.1 |  | Predictable XML IDs for product variant attribute values
 [product_template_xmlid](product_template_xmlid/) | 20.0.1.0.0 |  | Predictable XML IDs for products created in the interface

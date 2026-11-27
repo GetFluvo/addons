@@ -1,10 +1,14 @@
-Import messages or attachments with a `res_external_id` column holding the
-complete XML ID of the document, as `module.name`. The model and the id of
-the document are set from it:
+Import messages, attachments or activities with a `res_external_id` column
+holding the complete XML ID of the document, as `module.name`. The model and
+the id of the document are set from it:
 
 | body | message_type | res_external_id | attachment_ids/id |
 |---|---|---|---|
 | `<p>Called the customer</p>` | comment | `legacy.partner_42` | `legacy.attachment_7` |
+
+| activity_type_id/id | summary | date_deadline | user_id/id | res_external_id |
+|---|---|---|---|---|
+| `mail.mail_activity_data_call` | Call back | 2026-12-01 | `base.user_admin` | `legacy.partner_42` |
 
 The field can also be given to `create()` and `write()`, and is filled in
 exports with the first XML ID of the document.
