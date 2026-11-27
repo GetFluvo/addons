@@ -5,8 +5,8 @@
                 Import the chatter history of your records
             </h2>
             <p class="lead" style="color: #4a5f67; margin-bottom: 24px">
-                Link imported messages and attachments to their record by its XML
-                ID, without knowing database ids.
+                Link imported messages, attachments and activities to their record
+                by its XML ID, without knowing database ids.
             </p>
             <img
                 src="banner.png"
@@ -31,10 +31,10 @@
         </div>
         <div class="col-md-4" style="margin-bottom: 16px">
             <div style="border: 1px solid #d7ebef; border-radius: 12px; padding: 20px">
-                <h4 style="color: #177599; font-weight: 700">Messages and files</h4>
+                <h4 style="color: #177599; font-weight: 700">Messages, files, to-dos</h4>
                 <p style="color: #4a5f67; margin: 0">
-                    Works for chatter messages and for attachments, and for
-                    messages that carry their attachments.
+                    Works for chatter messages, attachments and activities, and
+                    for messages that carry their attachments.
                 </p>
             </div>
         </div>
@@ -96,6 +96,25 @@
                     <td><code>legacy.att_contract</code></td>
                 </tr>
             </table>
+            <p style="color: #0f5f7d; font-weight: 700; margin: 16px 0 4px">
+                3. Activities (mail.activity)
+            </p>
+            <table class="table table-sm" style="color: #0f2830">
+                <tr>
+                    <th style="color: #4a5f67; font-weight: 600">activity_type_id/id</th>
+                    <th style="color: #4a5f67; font-weight: 600">summary</th>
+                    <th style="color: #4a5f67; font-weight: 600">date_deadline</th>
+                    <th style="color: #4a5f67; font-weight: 600">user_id/id</th>
+                    <th style="color: #177599">res_external_id</th>
+                </tr>
+                <tr>
+                    <td><code>mail.mail_activity_data_call</code></td>
+                    <td>Renew the contract</td>
+                    <td>2026-12-01</td>
+                    <td><code>legacy.user_anna</code></td>
+                    <td><code>legacy.p_vermeer</code></td>
+                </tr>
+            </table>
             <img
                 src="screenshot_chatter.png"
                 class="img-fluid shadow"
@@ -104,7 +123,8 @@
             />
             <p style="color: #4a5f67; margin-top: 16px">
                 The messages keep their author and date. The usual access rights
-                apply to the record the message or attachment is linked to.
+                apply to the record the message, attachment or activity is linked
+                to.
             </p>
         </div>
     </div>
